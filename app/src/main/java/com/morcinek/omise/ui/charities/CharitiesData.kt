@@ -8,8 +8,8 @@ data class CharitiesData(
 
 data class CharityData(
     val id: Int,
-    val logo_url: String,
-    val name: String
+    val name: String,
+    val logo_url: String
 )
 
 interface CharitiesApi {
