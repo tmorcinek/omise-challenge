@@ -20,6 +20,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'BASE_URL', '"http://localhost:8080"'
+        }
+        debug {
+            buildConfigField 'String', 'BASE_URL', '"http://localhost:8080"'
         }
     }
 
@@ -39,6 +43,10 @@ dependencies {
 
     implementation 'org.koin:koin-android:2.1.4'
     implementation 'org.koin:koin-androidx-viewmodel:2.1.4'
+
+    implementation "com.squareup.retrofit2:retrofit:2.8.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.12.0"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
