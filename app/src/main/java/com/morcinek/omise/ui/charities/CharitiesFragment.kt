@@ -7,6 +7,7 @@ import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.morcinek.omise.R
 import com.morcinek.omise.core.BaseFragment
+import com.morcinek.omise.core.extensions.loadImageWithProgressAndError
 import com.morcinek.omise.core.extensions.observe
 import com.morcinek.omise.core.itemCallback
 import com.morcinek.omise.core.listAdapter
@@ -25,12 +26,12 @@ class CharitiesFragment : BaseFragment(R.layout.fragment_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
         view.progressBar.show()
         view.recyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = listAdapter(R.layout.vh_charity, itemCallback { areItemsTheSame { t1, t2 -> t1.id == t2.id } }) { _, item: CharityData ->
                 title.text = item.name
+                loadImageWithProgressAndError(image, item.logo_url)
             }.apply {
                 observe(viewModel.data) {
                     submitList(it.data)
