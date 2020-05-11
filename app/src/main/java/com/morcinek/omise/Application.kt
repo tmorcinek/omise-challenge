@@ -2,6 +2,7 @@ package com.morcinek.omise
 
 import android.app.Application
 import com.google.gson.GsonBuilder
+import com.morcinek.omise.ui.charities.charitiesModule
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -20,7 +21,8 @@ class Application : Application() {
             androidLogger()
             androidContext(this@Application)
             modules(
-                appModule
+                appModule,
+                charitiesModule
             )
         }
     }

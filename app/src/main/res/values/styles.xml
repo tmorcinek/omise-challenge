@@ -1,2 +1,7 @@
 <resources>
+
+    <style name="ItemTitle">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
 </resources>
