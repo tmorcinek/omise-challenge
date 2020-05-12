@@ -34,6 +34,11 @@ class DonationFragment : BaseFragment(R.layout.fragment_donation) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.apply {
+            refreshLayout.apply {
+                isEnabled = false
+                observe(viewModel.progress) { isRefreshing = it }
+                observe(viewModel.progress, BlockingDialog(requireContext()))
+            }
             nameTextInputLayout.editText?.apply {
                 setText(viewModel.name.value)
                 doOnTextChanged { text, _, _, _ -> viewModel.name.postValue(text.toString()) }
@@ -67,7 +72,6 @@ class DonationFragment : BaseFragment(R.layout.fragment_donation) {
                 else longSnackbar(it.error_message)
             }
         }
-        observe(viewModel.progress, BlockingDialog(requireContext()))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
