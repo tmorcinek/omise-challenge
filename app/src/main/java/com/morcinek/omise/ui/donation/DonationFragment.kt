@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.MutableLiveData
-import co.omise.android.models.Card
 import co.omise.android.models.Token
 import co.omise.android.ui.CreditCardActivity
 import co.omise.android.ui.OmiseActivity
@@ -62,7 +61,7 @@ class DonationFragment : BaseFragment(R.layout.fragment_donation) {
                 setOnClickListener { viewModel.postData() }
                 observe(viewModel.isButtonEnabled) { isEnabled = it }
             }
-            observe(viewModel.error) { longSnackbar(it.localizedMessage ?: "") }
+            observe(viewModel.error) { longSnackbar(it) }
             observe(viewModel.response) {
                 if (it.success) navController.navigate(R.id.nav_success, arguments, navOptionsPopUpExclusive(R.id.nav_charities))
                 else longSnackbar(it.error_message)

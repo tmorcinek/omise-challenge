@@ -7,11 +7,11 @@ import kotlinx.coroutines.*
 
 abstract class ApiViewModel : ViewModel() {
 
-    val error = MutableLiveData<Throwable>()
+    val error = MutableLiveData<String>()
     val progress = MutableLiveData(false)
 
     private val errorHandler = CoroutineExceptionHandler { _, throwable ->
-        error.postValue(throwable)
+        error.postValue(throwable.localizedMessage ?: "Network Error")
         progress.postValue(false)
     }
 

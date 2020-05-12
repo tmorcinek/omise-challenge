@@ -45,7 +45,7 @@ class CharitiesFragment : BaseFragment(R.layout.fragment_list) {
                     observe(viewModel.data) { submitList(it.data) }
                 }
             }
-            observe(viewModel.error) { longSnackbar(it.localizedMessage ?: "") }
+            observe(viewModel.error) { longSnackbar(it) }
         }
         viewModel.reloadData()
     }
