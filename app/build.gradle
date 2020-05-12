@@ -23,13 +23,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', 'BASE_URL', '"https://virtserver.swaggerhub.com/chakritw/tamboon-api/1.0.0/"'
+            buildConfigField 'String', 'BASE_URL', '"https://"'
+            buildConfigField 'String', 'PKEY', '"pkey_"'
         }
         debug {
             buildConfigField 'String', 'BASE_URL', '"https://virtserver.swaggerhub.com/chakritw/tamboon-api/1.0.0/"'
+            buildConfigField 'String', 'PKEY', '"pkey_test_5jucwf3itm39ix2mmxz"'
         }
     }
-
 }
 
 dependencies {
@@ -54,6 +55,8 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:2.8.1"
     implementation "com.squareup.retrofit2:converter-gson:2.6.2"
     implementation "com.squareup.okhttp3:logging-interceptor:3.12.0"
+
+    implementation 'co.omise:omise-android:3.0.0'
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'

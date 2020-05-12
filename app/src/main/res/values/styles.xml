@@ -14,5 +14,6 @@
         <item name="android:layout_marginBottom">@dimen/half_margin</item>
         <item name="android:layout_marginStart">@dimen/margin</item>
         <item name="android:layout_marginEnd">@dimen/margin</item>
+        <item name="android:foreground">@drawable/ripple_accent</item>
     </style>
 </resources>

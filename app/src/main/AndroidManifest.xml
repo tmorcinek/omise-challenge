@@ -27,6 +27,9 @@
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+                android:name="co.omise.android.ui.CreditCardActivity"
+                android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
