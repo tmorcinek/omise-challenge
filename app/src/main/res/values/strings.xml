@@ -4,12 +4,15 @@
     <string name="menu_charities">Charities</string>
     <string name="menu_donation">Donation</string>
 
-    <string name="name_hint">Donor name</string>
     <string name="donate">Make donation</string>
 
-    <string name="amount_header">Choose amount in THB</string>
-    <string name="value_not_set">Not set</string>
+    <string name="name_hint">Donor name</string>
 
-    <string name="credit_card_header">Select credit card</string>
+    <string name="amount_header">Choose amount</string>
+    <string name="amount_value">%d THB</string>
+
+    <string name="card_number_header">Select credit card</string>
+    <string name="card_number_value">XXXX-XXXX-XXXX-%s</string>
+    <string name="card_number_empty">NOT SET</string>
 
 </resources>

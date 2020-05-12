@@ -1,13 +1,9 @@
 package com.morcinek.omise.ui.charities
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.omise.android.models.Token
-import co.omise.android.ui.OmiseActivity.Companion.EXTRA_TOKEN_OBJECT
 import com.morcinek.omise.R
 import com.morcinek.omise.core.ApiViewModel
 import com.morcinek.omise.core.BaseFragment
@@ -51,13 +47,6 @@ class CharitiesFragment : BaseFragment(R.layout.fragment_list) {
             observe(viewModel.error) { longSnackbar(it.localizedMessage ?: "") }
         }
         viewModel.reloadData()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when (resultCode) {
-            Activity.RESULT_OK -> data?.getParcelableExtra<Token>(EXTRA_TOKEN_OBJECT)?.let {}
-        }
     }
 }
 
