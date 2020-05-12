@@ -53,4 +53,11 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="TitleText">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_big</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

@@ -15,4 +15,7 @@
     <string name="card_number_value">XXXX-XXXX-XXXX-%s</string>
     <string name="card_number_empty">NOT SET</string>
 
+    <string name="success_message">Your donation for\n\'%s\'\nhas finished with success!</string>
+    <string name="menu_success">Success</string>
+
 </resources>

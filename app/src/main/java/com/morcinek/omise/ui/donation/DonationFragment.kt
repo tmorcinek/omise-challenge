@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.MutableLiveData
+import co.omise.android.models.Card
 import co.omise.android.models.Token
 import co.omise.android.ui.CreditCardActivity
 import co.omise.android.ui.OmiseActivity
@@ -17,6 +18,7 @@ import com.morcinek.omise.core.BlockingDialog
 import com.morcinek.omise.core.extensions.*
 import com.morcinek.omise.getApi
 import com.morcinek.omise.ui.lazyNavController
+import com.morcinek.omise.ui.navOptionsPopUpExclusive
 import kotlinx.android.synthetic.main.button_header.view.*
 import kotlinx.android.synthetic.main.fragment_donation.view.*
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -61,7 +63,10 @@ class DonationFragment : BaseFragment(R.layout.fragment_donation) {
                 observe(viewModel.isButtonEnabled) { isEnabled = it }
             }
             observe(viewModel.error) { longSnackbar(it.localizedMessage ?: "") }
-            observe(viewModel.response) { if (it.success) navController.navigateUp() else longSnackbar(it.error_message) }
+            observe(viewModel.response) {
+                if (it.success) navController.navigate(R.id.nav_success, arguments, navOptionsPopUpExclusive(R.id.nav_charities))
+                else longSnackbar(it.error_message)
+            }
         }
         observe(viewModel.progress, BlockingDialog(requireContext()))
     }

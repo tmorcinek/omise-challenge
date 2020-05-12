@@ -10,6 +10,7 @@ import com.morcinek.omise.core.BaseFragment
 import com.morcinek.omise.core.extensions.loadImageWithProgressAndError
 import com.morcinek.omise.core.extensions.longSnackbar
 import com.morcinek.omise.core.extensions.observe
+import com.morcinek.omise.core.extensions.toBundle
 import com.morcinek.omise.core.itemCallback
 import com.morcinek.omise.core.listAdapter
 import com.morcinek.omise.getApi
@@ -39,7 +40,7 @@ class CharitiesFragment : BaseFragment(R.layout.fragment_list) {
                 adapter = listAdapter(R.layout.vh_charity, itemCallback { areItemsTheSame { t1, t2 -> t1.id == t2.id } }) { _, item: CharityData ->
                     title.text = item.name
                     loadImageWithProgressAndError(image, item.logo_url)
-                    setOnClickListener { navController.navigate(R.id.nav_donation) }
+                    setOnClickListener { navController.navigate(R.id.nav_donation, item.toBundle()) }
                 }.apply {
                     observe(viewModel.data) { submitList(it.data) }
                 }

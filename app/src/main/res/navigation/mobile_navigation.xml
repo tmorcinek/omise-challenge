@@ -15,5 +15,10 @@
             android:name="com.morcinek.omise.ui.donation.DonationFragment"
             android:label="@string/menu_donation"
             tools:layout="@layout/fragment_donation"/>
+    <fragment
+            android:id="@+id/nav_success"
+            android:name="com.morcinek.omise.ui.donation.SuccessFragment"
+            android:label="@string/menu_success"
+            tools:layout="@layout/fragment_success"/>
 
 </navigation>
