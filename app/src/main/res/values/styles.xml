@@ -16,4 +16,41 @@
         <item name="android:layout_marginEnd">@dimen/margin</item>
         <item name="android:foreground">@drawable/ripple_accent</item>
     </style>
+
+    <style name="DefaultTextInputLayout" parent="@style/Widget.Design.TextInputLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="passwordToggleTint">@color/black_60</item>
+    </style>
+    <style name="DefaultEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/font_edit_text</item>
+    </style>
+
+    <style name="ContainedButton" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="android:textColor">@color/textWhite</item>
+        <item name="android:textSize">@dimen/font_std</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">@dimen/double_margin</item>
+    </style>
+
+    <style name="ButtonHeader">
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:textColor">@color/black_60</item>
+    </style>
+
+    <style name="DimmedDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>

@@ -7,20 +7,17 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.omise.android.models.Token
-import co.omise.android.ui.CreditCardActivity
-import co.omise.android.ui.OmiseActivity.Companion.EXTRA_PKEY
 import co.omise.android.ui.OmiseActivity.Companion.EXTRA_TOKEN_OBJECT
-import com.morcinek.omise.BuildConfig
 import com.morcinek.omise.R
 import com.morcinek.omise.core.ApiViewModel
 import com.morcinek.omise.core.BaseFragment
 import com.morcinek.omise.core.extensions.loadImageWithProgressAndError
 import com.morcinek.omise.core.extensions.longSnackbar
 import com.morcinek.omise.core.extensions.observe
-import com.morcinek.omise.core.extensions.startActivityForResult
 import com.morcinek.omise.core.itemCallback
 import com.morcinek.omise.core.listAdapter
 import com.morcinek.omise.getApi
+import com.morcinek.omise.ui.lazyNavController
 import kotlinx.android.synthetic.main.fragment_list.view.*
 import kotlinx.android.synthetic.main.vh_charity.view.*
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -31,6 +28,8 @@ import org.koin.dsl.module
 class CharitiesFragment : BaseFragment(R.layout.fragment_list) {
 
     private val viewModel by viewModel<CharitiesViewModel>()
+
+    private val navController by lazyNavController()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,9 +43,7 @@ class CharitiesFragment : BaseFragment(R.layout.fragment_list) {
                 adapter = listAdapter(R.layout.vh_charity, itemCallback { areItemsTheSame { t1, t2 -> t1.id == t2.id } }) { _, item: CharityData ->
                     title.text = item.name
                     loadImageWithProgressAndError(image, item.logo_url)
-                    setOnClickListener {
-                        startActivityForResult<CreditCardActivity> { putExtra(EXTRA_PKEY, BuildConfig.PKEY) }
-                    }
+                    setOnClickListener { navController.navigate(R.id.nav_donation) }
                 }.apply {
                     observe(viewModel.data) { submitList(it.data) }
                 }
