@@ -10,8 +10,8 @@ import com.morcinek.omise.core.BlockingDialog
 import com.morcinek.omise.core.extensions.longSnackbar
 import com.morcinek.omise.core.extensions.observe
 import com.morcinek.omise.getApi
-import kotlinx.android.synthetic.main.fragment_donation.view.*
 import kotlinx.android.synthetic.main.button_header.view.*
+import kotlinx.android.synthetic.main.fragment_donation.view.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.dsl.module
@@ -25,15 +25,15 @@ class DonationFragment : BaseFragment(R.layout.fragment_donation) {
         super.onViewCreated(view, savedInstanceState)
         view.apply {
             confirmButton.setOnClickListener { viewModel.postData() }
-            amount.apply { 
+            amount.apply {
                 header.setText(R.string.amount_header)
                 value.setText(R.string.value_not_set)
-                setOnClickListener {  }
+                setOnClickListener { }
             }
             creditCard.apply {
                 header.setText(R.string.credit_card_header)
                 value.setText(R.string.value_not_set)
-                setOnClickListener {  }
+                setOnClickListener { }
             }
             observe(viewModel.error) { longSnackbar(it.localizedMessage ?: "") }
         }
@@ -49,6 +49,6 @@ private class DonationViewModel(private val api: DonationsApi) : ApiViewModel() 
 
     val data = MutableLiveData<DonationResponse>()
 
-    fun postData() = reloadData(data) { api.postData(DonationData(100, "Tomasz", "token")) }
+    fun postData() = requestData(data) { api.postData(DonationRequest(100, "Tomasz", "token")) }
 }
 

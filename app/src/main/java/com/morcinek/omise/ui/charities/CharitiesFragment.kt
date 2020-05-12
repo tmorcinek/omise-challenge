@@ -65,10 +65,10 @@ val charitiesModule = module {
     viewModel { CharitiesViewModel(getApi()) }
 }
 
-private class CharitiesViewModel(private val summaryApi: CharitiesApi) : ApiViewModel() {
+private class CharitiesViewModel(private val api: CharitiesApi) : ApiViewModel() {
 
     val data = MutableLiveData<CharitiesData>()
 
-    fun reloadData() = reloadData(data) { summaryApi.getData() }
+    fun reloadData() = requestData(data) { api.getData() }
 }
 

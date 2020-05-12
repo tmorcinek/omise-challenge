@@ -15,7 +15,7 @@ abstract class ApiViewModel : ViewModel() {
         progress.postValue(false)
     }
 
-    protected fun <T> reloadData(mutableLiveData: MutableLiveData<T>, block: suspend CoroutineScope.() -> T) {
+    protected fun <T> requestData(mutableLiveData: MutableLiveData<T>, block: suspend CoroutineScope.() -> T) {
         progress.postValue(true)
         viewModelScope.launch(errorHandler) {
             mutableLiveData.postValue(withContext(Dispatchers.IO, block))

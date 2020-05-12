@@ -3,7 +3,7 @@ package com.morcinek.omise.ui.donation
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-data class DonationData(
+data class DonationRequest(
     val amount: Int,
     val name: String,
     val token: String
@@ -17,6 +17,6 @@ data class DonationResponse(
 
 interface DonationsApi {
     @POST("donations")
-    suspend fun postData(@Body data: DonationData): DonationResponse
+    suspend fun postData(@Body request: DonationRequest): DonationResponse
 }
 
